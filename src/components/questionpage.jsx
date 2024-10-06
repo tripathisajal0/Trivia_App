@@ -103,7 +103,12 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
 
     const nextButton = () => {
         const isCorrect = selectedAnswers[curr_QuestionsIndex] === curr_Questions.correct_answer;
-
+        if(curr_QuestionsIndex === 5 || curr_QuestionsIndex === 4) {
+            document.getElementById('buttonToChange').innerHTML = "Engame";
+        }
+        else {
+            document.getElementById('buttonToChange').innerHTML = "Next";
+        }
         
 
         if(curr_QuestionsIndex === 4) {
@@ -201,7 +206,7 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
                             gap: '5px'
                         }}>
                             <button className='btn btn-primary ml-0' onClick={previousButton}>Previous</button>
-                            <button className='btn btn-primary px-4' onClick={nextButton}>Next</button>
+                            <button id="buttonToChange" className='btn btn-primary px-4' onClick={nextButton}>Next</button>
                         </div>
                         <hr />
                         <p id='reminder'></p>
