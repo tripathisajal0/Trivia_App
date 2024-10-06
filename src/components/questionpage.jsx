@@ -106,21 +106,20 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
 
         
 
-        if(curr_QuestionsIndex === 5) {
-            
-            document.getElementById('reminder').innerHTML = "Select another category to continue or 'Next' button to see the winner";
-            
+        if(curr_QuestionsIndex === 4) {
+            document.getElementById('reminder1').innerHTML = "Select another category to continue or 'Next' button to see the winner";
         }
         else {
-            document.getElementById('reminder').innerHTML = "";
+            document.getElementById('reminder1').innerHTML = "";
         }
         if(selectedAnswers[curr_QuestionsIndex] === "") {
             document.getElementById('reminder').innerHTML = "Select an answer";
             return;
         }
+        else {
+            document.getElementById('reminder').innerHTML = "";
+        }
         
-              
-
 
         if (isCorrect && !scoreUpdated[curr_QuestionsIndex]) {
             if (currentPlayer === player1) {
@@ -149,6 +148,7 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
 
     const previousButton = () => {
         if (curr_QuestionsIndex > 0) {
+            document.getElementById('reminder').innerHTML = "";
             setcurr_QuestionsIndex(curr_QuestionsIndex - 1);
             setCurrentPlayer(currentPlayer === player1 ? player2 : player1);
         }
@@ -204,6 +204,7 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
                         </div>
                         <hr />
                         <p id='reminder'></p>
+                        <p id='reminder1'></p>
                     </div>
                 </div>
             )}
