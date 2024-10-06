@@ -104,24 +104,22 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
     const nextButton = () => {
         const isCorrect = selectedAnswers[curr_QuestionsIndex] === curr_Questions.correct_answer;
 
-
+        
 
         if(curr_QuestionsIndex === 5) {
-            if (selectedAnswers[curr_QuestionsIndex] === "") {
-                document.getElementById('reminder').innerHTML = "Please select an answer then\n Select another category to continue or 'Next' button to see the winner";
-                return;
-            }
             
-                document.getElementById('reminder').innerHTML = "Select another category to continue or 'Next' button to see the winner";
+            document.getElementById('reminder').innerHTML = "Select another category to continue or 'Next' button to see the winner";
             
-        }
-        else if(selectedAnswers[curr_QuestionsIndex] === "") {
-            document.getElementById('reminder').innerHTML = "Select an answer";
-            return;
         }
         else {
             document.getElementById('reminder').innerHTML = "";
-        }       
+        }
+        if(selectedAnswers[curr_QuestionsIndex] === "") {
+            document.getElementById('reminder').innerHTML = "Select an answer";
+            return;
+        }
+        
+              
 
 
         if (isCorrect && !scoreUpdated[curr_QuestionsIndex]) {
@@ -174,12 +172,12 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
                         <h4>{currentPlayer}'s Turn</h4>
                     </div>
                     <hr />
-                    <div className='card-body'>
+                    <div className='card-body ml-0'>
                         <h5 className="question">Q). {curr_Questions.question}</h5>
                         <hr />
                         <div className="options row mx-2">
                             {curr_Questions.options.map((answer, index) => (
-                                <div className={`option col-md-6 mb-3 text-start ${getAnswerClass(answer)}`} key={index}>
+                                <div className={`option  col-md-6 mb-3 text-start ${getAnswerClass(answer)}`} key={index}>
                                     <input
                                         type="radio"
                                         name="option"
@@ -199,10 +197,10 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
                         <div style={{
                             display: 'flex',
                             justifyContent: 'space-between',
-                            gap: '10px'
+                            gap: '5px'
                         }}>
-                            <button className='buttonControl1' onClick={previousButton}>Previous</button>
-                            <button className='buttonControl2' onClick={nextButton}>Next</button>
+                            <button className='btn btn-primary ml-0' onClick={previousButton}>Previous</button>
+                            <button className='btn btn-primary px-4' onClick={nextButton}>Next</button>
                         </div>
                         <hr />
                         <p id='reminder'></p>
