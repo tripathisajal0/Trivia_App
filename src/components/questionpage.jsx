@@ -123,11 +123,12 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
 
         if (isCorrect && !scoreUpdated[curr_QuestionsIndex]) {
             if (currentPlayer === player1) {
-                UpdateScore1((prevScore) => prevScore + 1);
-                setP1(prev => prev + 1);
+                
+                (curr_QuestionsIndex === 0 || curr_QuestionsIndex === 1) ? setP1(prev => prev + 10) :(curr_QuestionsIndex === 2 || curr_QuestionsIndex === 3) ? setP1(prev => prev + 20) :setP1(prev => prev + 30);
+                (curr_QuestionsIndex === 0 || curr_QuestionsIndex === 1) ? UpdateScore1(prev => prev + 10) :(curr_QuestionsIndex === 2 || curr_QuestionsIndex === 3) ? UpdateScore1(prev => prev + 20) :UpdateScore1(prev => prev + 30);
             } else {
-                UpdateScore2((prevScore) => prevScore + 1);
-                setP2(prev => prev + 1);
+                (curr_QuestionsIndex === 0 || curr_QuestionsIndex === 1) ? setP2(prev => prev + 10) :(curr_QuestionsIndex === 2 || curr_QuestionsIndex === 3) ? setP2(prev => prev + 20) :setP2(prev => prev + 30);
+                (curr_QuestionsIndex === 0 || curr_QuestionsIndex === 1) ? UpdateScore2(prev => prev + 10) :(curr_QuestionsIndex === 2 || curr_QuestionsIndex === 3) ? UpdateScore2(prev => prev + 20) :UpdateScore2(prev => prev + 30);
             }
 
             const updatedScoreStatus = [...scoreUpdated];
