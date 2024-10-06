@@ -39,4 +39,4 @@ After completing the game upon you wish you can continue it by selcting another 
 
 
 
-Live Preview :- [Deplyment Link ][]
+Live Preview :- [Deplyment Link ][https://trivia-app-sajal.vercel.app/]
