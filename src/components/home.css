@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-weight: 400;
+    font-style: normal;
+    font-family: 'Roboto'
+}
+
+.mainDiv {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    max-height: 1000000000px;
+    align-items: center;
+    background: linear-gradient(to bottom, #bb93bc, #c670c8, #d227d4);
+}
+
+.cardDiv {
+    margin: 10px;
+    max-width: 1000px;
+    padding: 30px;
+    background: linear-gradient(to right, rgb(206, 31, 31), rgb(62, 62, 238));
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.cardDiv:hover {
+    transform: scale(1.01);
+    transition: transform 0.5s;
+}
+
+
+.gameHeading {
+
+    margin-top: 20px;
+    margin-inline: 0px;
+    font-size: 50px;
+    font-family: "Roboto";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.labelP {
+    font-size: 24px;
+    font-family: "Roboto";
+    color: #ffff;
+    font-weight: bold;
+}
+
+.inputFeild {
+    margin: auto;
+    width: 50%;
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: "Roboto";
+
+}
+
+.inputFeild:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s;
+}
+
+.button {
+    padding: 10px 50px;
+    background: linear-gradient(to right, rgb(62, 62, 238), rgb(206, 31, 31));
+    color: #fff;
+    font-size: 20px;
+    font-size: 16px;
+    font-family: "Roboto";
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 2px solid #306098;
+}
+
+.button:hover {
+    color: #fff;
+    background: linear-gradient(to right, rgb(206, 31, 31), rgb(62, 62, 238));
+    transform: scale(1.05);
+    transition: transform 0.3s;
+
+}
+
+.button1 {
+    text-align: center;
+}
+
+.scoreCard {
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+}
+
+.quizContainer {
+    background-color: #2f44ac;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.te {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-family: "Roboto";
+    color: rgb(255, 255, 255);
+}
+
+.ts {
+    padding: 10px;
+    font-size: 30px;
+}
+
+/* For phones (small screens) */
+@media (max-width: 767px) {
+    .vsCard {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+/* For other devices (medium and larger screens) */
+@media (min-width: 768px) {
+    .vsCard {
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
+
+.buttonControl1{
+    padding : 10px 30px;
+    border-radius: 10px;
+    background-color: aqua;
+    border-width: 0px;
+} & .buttonControl1:hover{
+    background-color: #00FFFF;
+    transform: scale(1.05);
+    transition: transform 0.3s;
+}
+
+
+.buttonControl2{
+    padding : 10px 40px;
+    background-color: aqua;
+    border-width: 0px;
+    border-radius: 10px;
+} & .buttonControl2:hover{
+    background-color: #00FFFF;
+    transform: scale(1.05);
+    transition: transform 0.3s;
+}
+
