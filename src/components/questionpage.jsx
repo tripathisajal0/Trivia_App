@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import "./home.css";
-import CustomPopup from './winner'; // Import the CustomPopup component
+import WinnerCard from './winner'; // Import the WinnerCard component
 
-export default function Questionspage({ category, player1, player2, UpdateScore1, UpdateScore2 }) {
+export default function Questionspage({v,setv, category, player1, player2, UpdateScore1, UpdateScore2 }) {
     const [questions, setQuestions] = useState([]);
     const [curr_QuestionsIndex, setcurr_QuestionsIndex] = useState(0);
     const [currentPlayer, setCurrentPlayer] = useState(player1);
@@ -68,13 +68,22 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
 
         fetchQuestions();
     }, [category]);
-
+    useEffect(() => {
+        if (!v) {
+            setcurr_QuestionsIndex(0);
+            setv(true);
+        }
+    }, [v]); 
+    
     if (questions.length === 0) {
         return <h1>Loading...</h1>;
     }
 
-    const curr_Questions = questions[curr_QuestionsIndex];
 
+    const curr_Questions = questions[curr_QuestionsIndex];
+    
+    
+    
     const answerSelection = (answer) => {
         if (!lockedAnswers[curr_QuestionsIndex]) { 
             const updatedAnswers = [...selectedAnswers];
@@ -87,7 +96,7 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
         }
     };
 
-    const getAnswerClass = (answer) => {
+    const optionColor = (answer) => {
         const correctAnswer = curr_Questions.correct_answer;
         const selectedAnswer = selectedAnswers[curr_QuestionsIndex];
 
@@ -104,7 +113,7 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
     const nextButton = () => {
         const isCorrect = selectedAnswers[curr_QuestionsIndex] === curr_Questions.correct_answer;
         if(curr_QuestionsIndex === 5 || curr_QuestionsIndex === 4) {
-            document.getElementById('buttonToChange').innerHTML = "Engame";
+            document.getElementById('buttonToChange').innerHTML = "Endgame";
         }
         else {
             document.getElementById('buttonToChange').innerHTML = "Next";
@@ -112,7 +121,7 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
         
 
         if(curr_QuestionsIndex === 4) {
-            document.getElementById('reminder1').innerHTML = "Select another category to continue or 'Next' button to see the winner";
+            document.getElementById('reminder1').innerHTML = "Select another category to continue or 'Endgame' button to see the winner";
         }
         else {
             document.getElementById('reminder1').innerHTML = "";
@@ -161,7 +170,7 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
     };
 
     const PopUpCard = () => {
-        setShowWinner(false); // Close the popup when "Close" button is clicked
+        setShowWinner(false); //Closes the popup when "Close" button is clicked
         UpdateScore1(0);
         UpdateScore2(0);
         setP1(0);
@@ -171,7 +180,7 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
     return (
         <>
             {showWinner ? (
-                <CustomPopup score1={p1} score2={p2} onClose={PopUpCard}/> 
+                <WinnerCard score1={p1} score2={p2} onClose={PopUpCard}/> 
             ) : (
                 <div className="quizContainer card">
                     <div className='card-header'>
@@ -183,7 +192,7 @@ export default function Questionspage({ category, player1, player2, UpdateScore1
                         <hr />
                         <div className="options row mx-2">
                             {curr_Questions.options.map((answer, index) => (
-                                <div className={`option  col-md-6 mb-3 text-start ${getAnswerClass(answer)}`} key={index}>
+                                <div className={`option  col-md-6 mb-3 text-start ${optionColor(answer)}`} key={index}>
                                     <input
                                         type="radio"
                                         name="option"
