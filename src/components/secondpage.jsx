@@ -4,6 +4,7 @@ import Questionpage from './questionpage';
 export default function Secondpage({ player1, player2 }) {
 
     const [category, setCategory] = useState("");
+    const [v, setv] = useState(true);
 
 
 
@@ -70,7 +71,7 @@ export default function Secondpage({ player1, player2 }) {
                             <h4 className="text-white">Select a Category</h4>
                         </div>
                         <div className="card-body">
-                            <select className="form-select" onChange={(e) => {setCategory(e.target.value);}}>
+                            <select className="form-select" onChange={(e) => {setCategory(e.target.value);setv(false);}}>
                                 <option value={null}>Any Category</option>
                                 <option value={9}>General Knowledge</option>
                                 <option value={10}>Entertainment: Books</option>
@@ -103,9 +104,9 @@ export default function Secondpage({ player1, player2 }) {
 
                     </div>
                     {valid ? (
-                        <Questionpage setCategory={setCategory} category={category} UpdateScore1={UpdateScore1} UpdateScore2={UpdateScore2} player1={player1} player2={player2} />
+                        <Questionpage v={v} setv = {setv} setCategory={setCategory} category={category} UpdateScore1={UpdateScore1} UpdateScore2={UpdateScore2} player1={player1} player2={player2} />
                     ) : (
-                        <></>
+                        <> </>
                     )}
                 </div>
             </div>
